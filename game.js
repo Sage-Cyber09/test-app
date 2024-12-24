@@ -19,6 +19,7 @@ let player = {
 let obstacles = [];
 let frame = 0;
 let score = 0;
+
 let obstacleTypes = ['dog', 'car'];
 
 function update() {
@@ -95,7 +96,7 @@ function resetGame() {
 
 function drawDog(x, y) {
     ctx.fillStyle = 'brown';
-    ctx.fillRect(x, y+10, 50, 30); // Body
+    ctx.fillRect(x, y + 10, 50, 30); // Body
 
     ctx.fillStyle = 'black';
     ctx.beginPath();
@@ -202,5 +203,12 @@ document.addEventListener('keydown', (e) => {
         player.dy = player.jumpPower;
     }
 });
+
+document.addEventListener('click', () => {
+    console.log('👴 click')
+    if (player.grounded) {
+        player.dy = player.jumpPower;
+    }
+})
 
 gameLoop();

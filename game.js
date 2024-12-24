@@ -19,6 +19,7 @@ let player = {
 let obstacles = [];
 let frame = 0;
 let score = 0;
+let highScore = 0;
 
 let obstacleTypes = ['dog', 'car'];
 
@@ -37,7 +38,6 @@ function update() {
 
     // Check for collisions
     if (checkCollision()) {
-        alert("TRY AGAIN");
         resetGame();
     }
 
@@ -70,6 +70,11 @@ function update() {
             return false;
         }
     });
+
+    // Update high score
+    if (score > highScore) {
+        highScore = score;
+    }
 }
 
 function checkCollision() {
@@ -190,6 +195,7 @@ function draw() {
     ctx.font = '24px Arial';
     ctx.textAlign = 'center';
     ctx.fillText(`Score: ${score}`, canvas.width / 2, 30);
+    ctx.fillText(`High Score: ${highScore}`, canvas.width / 2, 60);
 }
 
 function gameLoop() {
